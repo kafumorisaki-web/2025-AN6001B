@@ -25,6 +25,13 @@ def dbs_prediction():
     r=model.predict([[1.3]])
     return(render_template("dbs_prediction.html",r=r[0][0]))
 
+@app.route("/credit",methods=["GET","POST"])
+def credit():
+    q=float(request.form.get("q"))
+    model=joblib.load("german_credit.pkl")
+    r=model.predict([[20]])
+    return(render_template("credit.html",r=r[0][0]))
+
 if __name__ == "__main__":
     app.run()
     # app.run(host='0.0.0.0', port=5000)
