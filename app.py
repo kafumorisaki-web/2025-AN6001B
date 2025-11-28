@@ -22,7 +22,7 @@ def dbs():
 def dbs_prediction():
     q=float(request.form.get("q"))
     model=joblib.load("dbs.pkl")
-    r=model.predict([[1.3]])
+    r=model.predict([[q]])
     return(render_template("dbs_prediction.html",r=r[0][0]))
 
 @app.route("/credit",methods=["GET","POST"])
